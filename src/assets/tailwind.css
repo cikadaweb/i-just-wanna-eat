@@ -26,10 +26,10 @@ body {
 
 @layer components {
   .btn {
-    @apply bg-[#12b488] text-white px-3 py-2 rounded-md text-sm text-white inline-block;
+    @apply block px-3 py-4 rounded-md;
   }
 
   .card {
-    @apply p-3 rounded-md bg-white shadow-md h-full;
+    @apply rounded-md bg-transparent shadow-md border-2 border-slate-900;
   }
 }

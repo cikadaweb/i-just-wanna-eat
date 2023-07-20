@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-100 min-w-[330px]
+}
+
+@layer base {
+  @font-face {
+    font-family: 'Roboto';
+    font-weight: 400;
+    src: url(./fonts/roboto-v30-cyrillic_latin-regular.woff2) format("woff2");
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-weight: 500;
+    src: url(./fonts/roboto-v30-cyrillic_latin-500.woff2) format("woff2");
+  }
+  @font-face {
+    font-family: 'Roboto';
+    font-weight: 700;
+    src: url(./fonts/roboto-v30-cyrillic_latin-700.woff2) format("woff2");
+  }
+}
+
+@layer components {
+  .btn {
+    @apply bg-[#12b488] text-white px-3 py-2 rounded-md text-sm text-white inline-block;
+  }
+
+  .card {
+    @apply p-3 rounded-md bg-white shadow-md h-full;
+  }
+}

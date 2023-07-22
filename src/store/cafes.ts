@@ -24,8 +24,11 @@ export const useCafesStore = defineStore('cafes', {
       const data = await response.data.data;
       this.setCafes(data);
     },
-    async fetchOneCafe(id: number) {
-      const response = await CafesApi.getOneByID(id);
+    async fetchRandomCafe() {
+      let cafesID = this.cafes.map((cafe) => cafe.id);
+      let randomIndex = Math.floor(Math.random() * cafesID.length);
+      let randomCafeId = cafesID[randomIndex];
+      const response = await CafesApi.getOneByID(randomCafeId);
       const data = await response.data.data;
       this.setCurrentCafe(data);
     },

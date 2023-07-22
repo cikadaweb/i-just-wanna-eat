@@ -38,8 +38,10 @@ export const useCafesStore = defineStore('cafes', {
       try {
         const response = await CafesApi.getOneByID(randomCafeId);
         const data = await response.data.data;
-        this.setCurrentCafe(data);
-        commonStore.setLoading(false);
+        setTimeout(() => {
+          this.setCurrentCafe(data);
+          commonStore.setLoading(false);
+        }, 1000);
       } catch (error) {
         throw error;
       }

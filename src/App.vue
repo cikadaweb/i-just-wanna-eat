@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TheHeader from '@/components/header/TheHaeder.vue';
+import TheHeader from '@/components/header/TheHeader.vue';
 import AppButton from '@/components/button/AppButton.vue';
 import AppDivider from '@/components/divider/AppDivider.vue';
 import CafesList from '@/components/cafes/CafesList.vue';
@@ -7,7 +7,7 @@ import AppModal from '@/components/modal/AppModal.vue';
 
 import scrollController from '@/utils/modal-scroll';
 
-import { ref, watch, onBeforeUnmount } from 'vue';
+import { ref, watch, onBeforeUnmount, Ref } from 'vue';
 import { useCafesStore } from '@/store/cafes';
 
 
@@ -18,19 +18,21 @@ import { useCafesStore } from '@/store/cafes';
     isShowModal.value = true;
   };
 
-  const modalRef = ref(null)
+const modalRef: Ref<HTMLElement | null> = ref(null);
   const isShowModal = ref(false);
 
   const closeModal = () => {
     isShowModal.value = false;
   };
   
-  const handleOutsideModalClick = (event: event) => {
+  const handleOutsideModalClick = (event: MouseEvent | KeyboardEvent) => {
+  if (modalRef.value !== null) {
+    // @ts-ignore
     const modal = modalRef.value.$el;
-    console.log(modal)
-    if (event.target === modal || event.code === 'Escape') {
+    if (modal && ((event instanceof KeyboardEvent && event.code === 'Escape') || event.target === modal)) {
       closeModal();
     }
+  }
   }
 
   watch(isShowModal, (value: boolean) => {

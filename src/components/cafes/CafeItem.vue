@@ -54,8 +54,8 @@ import { ICafe } from '@/store/cafes.interfaces';
       >
     </div>
     <div class="p-3">
-      <div class="flex justify-between mt-3">
-        <span class="text-2xl font-bold">{{ cafeTime }} минут</span>
+      <div class="flex justify-between gap-2 mt-3">
+        <span class="text-base sm:text-lg font-bold">{{ cafeTime }} минут</span>
         <AppBadge 
           class="text-base border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white"
         >{{ cafeCusine }}</AppBadge>

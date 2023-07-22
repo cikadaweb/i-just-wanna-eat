@@ -10,3 +10,7 @@ export interface ICafe {
   business_lunch: boolean,
   price: number,
 }
+export interface IState {
+  cafes: ICafe[],
+  currentCafe: ICafe,
+}

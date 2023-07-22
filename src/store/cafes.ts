@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 
 import { CafesApi } from '@/assets/api/cafes';
 
-import { ICafe } from '@/store/cafes.interfaces';
+import { IState, ICafe } from '@/store/cafes.interfaces';
 
 import { useCommonStore } from '@/store/common';
 
@@ -10,7 +10,7 @@ export const useCafesStore = defineStore('cafes', {
   state: () => ({
     cafes: [] as ICafe[],
     currentCafe: {} as ICafe,
-  }),
+  } as IState),
   getters: {
     getCafesList(): ICafe[]  {
       return this.cafes;

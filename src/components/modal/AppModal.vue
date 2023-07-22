@@ -2,9 +2,11 @@
 import AppDivider from '@/components/divider/AppDivider.vue';
 import AppButton from '@/components/button/AppButton.vue';
 import AppLabel from '@/components/list/AppLabel.vue';
+import AppSpinner from '@/components/loader/AppSpinner.vue';
 
 import { computed } from 'vue';
 import { useCafesStore } from '@/store/cafes';
+import { useCommonStore } from '@/store/common';
 
   const emit = defineEmits(['close-modal']);
 
@@ -16,6 +18,7 @@ import { useCafesStore } from '@/store/cafes';
   });
 
   const cafesStore = useCafesStore();
+  const commonStore = useCommonStore();
 
   const clickOnButton = () => {
     cafesStore.fetchRandomCafe();
@@ -58,7 +61,18 @@ import { useCafesStore } from '@/store/cafes';
       <AppDivider />
 
       <div class="modal__body text-base md:text-lg p-6">
-        <div class="flex justify-between items-center flex-wrap -mx-4">
+        
+        <div 
+          v-if="commonStore.getLoadingStatus"
+          class="h-[300px]"
+        >
+          <AppSpinner/>
+        </div>
+
+        <div
+          v-else
+          class="flex justify-between items-center flex-wrap -mx-4"
+        >
           <div class="w-full sm:w-1/2 p-4">
             <div class="relative pt-[300px]">
               <img
@@ -101,7 +115,7 @@ import { useCafesStore } from '@/store/cafes';
 
       <div class="modal__footer p-6">
         <AppButton
-          class="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-2xl px-8 py-4 mx-auto transition duration-300 ease-in-out hover:shadow-lg"
+          class="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl px-8 py-4 mx-auto transition duration-300 ease-in-out hover:shadow-lg"
           @click-on-button="clickOnButton"
         >Хочу в другое место
         </AppButton>

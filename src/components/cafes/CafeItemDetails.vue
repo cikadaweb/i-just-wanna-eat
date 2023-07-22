@@ -1,6 +1,9 @@
 <script setup lang="ts">
+// @ts-ignore
 import AppLocationIcon from '@/assets/icons/location.svg?component';
+// @ts-ignore
 import AppCaloriesIcon from '@/assets/icons/calories.svg?component';
+// @ts-ignore
 import AppCompassIcon from '@/assets/icons/compass.svg?component';
 
 import { type PropType, computed } from 'vue';

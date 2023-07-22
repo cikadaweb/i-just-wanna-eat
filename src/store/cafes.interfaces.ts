@@ -5,7 +5,7 @@ export interface ICafe {
   landmark: string,
   cuisine: string,
   distance: number,
-  time: string,
+  time: number,
   photo: string,
   business_lunch: boolean,
   price: number,

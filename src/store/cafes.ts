@@ -47,7 +47,7 @@ export const useCafesStore = defineStore('cafes', {
     setCafes(payload: ICafe[]) {
       this.cafes = payload;
     },
-    setCurrentCafe(payload: ICafe[]) {
+    setCurrentCafe(payload: ICafe) {
       this.currentCafe = payload;
     },
   },

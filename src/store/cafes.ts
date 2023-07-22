@@ -4,6 +4,7 @@ import { CafesApi } from '@/assets/api/cafes';
 
 import { ICafe } from '@/store/cafes.interfaces';
 
+import { useCommonStore } from '@/store/common';
 
 export const useCafesStore = defineStore('cafes', {
   state: () => ({
@@ -20,17 +21,28 @@ export const useCafesStore = defineStore('cafes', {
   },
   actions: {
     async fetchAllCafes() {
-      const response = await CafesApi.getAll();
-      const data = await response.data.data;
-      this.setCafes(data);
+      try {
+        const response = await CafesApi.getAll();
+        const data = await response.data.data;
+        this.setCafes(data);
+      } catch (error) {
+        throw error;
+      }
     },
     async fetchRandomCafe() {
+      const commonStore = useCommonStore();
+      commonStore.setLoading(true);
       let cafesID = this.cafes.map((cafe) => cafe.id);
       let randomIndex = Math.floor(Math.random() * cafesID.length);
       let randomCafeId = cafesID[randomIndex];
-      const response = await CafesApi.getOneByID(randomCafeId);
-      const data = await response.data.data;
-      this.setCurrentCafe(data);
+      try {
+        const response = await CafesApi.getOneByID(randomCafeId);
+        const data = await response.data.data;
+        this.setCurrentCafe(data);
+        commonStore.setLoading(false);
+      } catch (error) {
+        throw error;
+      }
     },
     setCafes(payload: ICafe[]) {
       this.cafes = payload;

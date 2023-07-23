@@ -7,10 +7,12 @@ import AppBusinessIcon from '@/assets/icons/business.svg?component';
 // @ts-ignore
 import AppNoBusinessIcon from '@/assets/icons/nobusiness.svg?component';
 import CafeItemDetails from '@/components/cafes/CafeItemDetails.vue';
+import AppPicture from '@/components/picture/AppPicture.vue';
 
 
 import { type PropType, ref, computed } from 'vue';
 import { ICafe } from '@/store/cafes.interfaces';
+import { useRouter } from 'vue-router';
 
   const props = defineProps({
     item: {
@@ -18,11 +20,17 @@ import { ICafe } from '@/store/cafes.interfaces';
       required: true,
     },
   });
+  
+  const router = useRouter();
 
   const isShowDetails = ref(false);
 
   const toggleCafeDetails = () => {
     isShowDetails.value = !isShowDetails.value;
+  };
+
+  const goToCafePage = (cafeID: number) => {
+    router.push(`/cafe/${cafeID}`);
   };
 
   const cafeTime = computed(() => {
@@ -49,19 +57,24 @@ import { ICafe } from '@/store/cafes.interfaces';
 </script>
 
 <template>
-  <div class="card relative transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30">
-    <div class="relative pt-[300px]">
-      <img
-        class="absolute top-0 left-0 w-full h-full object-cover"
-        :src="cafeImg" :alt="`${item.name}-cafe`"
-      >
-    </div>
+  <div
+    class="card relative transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"
+  >
+
+    <AppPicture
+      class="cursor-pointer"
+      :imageSrc="cafeImg"
+      :imageName="item.name"
+      @click="goToCafePage(props.item.id)" 
+    />
+
     <div class="p-3">
       <div class="flex justify-between gap-2 mt-3">
         <span class="text-base sm:text-lg font-bold">{{ cafeTime }} минут</span>
         <AppBadge 
           class="text-base border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white"
-        >{{ cafeCusine }}</AppBadge>
+        >{{ cafeCusine }}
+        </AppBadge>
       </div>
       <div class="flex justify-between mt-5">
         <span v-if="item.business_lunch"><AppBusinessIcon /></span>

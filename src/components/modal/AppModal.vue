@@ -3,10 +3,14 @@ import AppDivider from '@/components/divider/AppDivider.vue';
 import AppButton from '@/components/button/AppButton.vue';
 import AppLabel from '@/components/list/AppLabel.vue';
 import AppSpinner from '@/components/loader/AppSpinner.vue';
+import AppPicture from '@/components/picture/AppPicture.vue'
+// @ts-ignore
+import AppShareLinkIcon from '@/assets/icons/share-link.svg?component';
 
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import { useCafesStore } from '@/store/cafes';
 import { useCommonStore } from '@/store/common';
+import { useRouter } from 'vue-router';
 
   const emit = defineEmits(['close-modal']);
 
@@ -20,13 +24,35 @@ import { useCommonStore } from '@/store/common';
   const cafesStore = useCafesStore();
   const commonStore = useCommonStore();
 
+  const router = useRouter();
+
+  const isLinkCopied = ref(false);
+
   const clickOnButton = () => {
     cafesStore.fetchRandomCafe();
   };
 
   const closeModal = () => {
     emit('close-modal');
-  }
+  };
+
+  const goToCafePage = (cafeID: number) => {
+    router.push(`/cafe/${cafeID}`);
+  };
+
+  const copyLinkToShare = async () => {
+    const urlToCopy = `http://localhost:5173/cafe/${cafesStore.getCurrentCafe.id}`;
+    try {
+      await navigator.clipboard.writeText(urlToCopy);
+      isLinkCopied.value = true;
+      setTimeout(() => {
+        isLinkCopied.value = false;
+      }, 3000)
+      console.log('Ссылка скопирована в буфер обмена: ' + urlToCopy);
+    } catch (error) {
+      console.error('Failed to copy link to clipboard:', error);
+    }
+  };
 
   const cafeImg = computed(() => {
     if (cafesStore.getCurrentCafe.photo) {
@@ -34,6 +60,7 @@ import { useCommonStore } from '@/store/common';
     }
     return 'https://via.placeholder.com/500/FFFFFF/17A2B8/?text=картинка'
   });
+
   const cafeBusinessLunch = computed(() => {
     if (cafesStore.getCurrentCafe.business_lunch) {
       return 'Бизнес ланч есть'
@@ -74,13 +101,15 @@ import { useCommonStore } from '@/store/common';
           class="flex justify-between items-center flex-wrap -mx-4"
         >
           <div class="w-full sm:w-1/2 p-4">
-            <div class="relative pt-[300px]">
-              <img
-                class="absolute top-0 left-0 w-full h-full object-cover rounded"
-                :src="cafeImg" :alt="`${cafesStore.getCurrentCafe.name}-cafe`"
-              >
-            </div>
+            <AppPicture
+              class="cursor-pointer"
+              :imageSrc="cafeImg"
+              :imageName="cafesStore.getCurrentCafe.name"
+              rounded
+              @click="goToCafePage(cafesStore.getCurrentCafe.id)" 
+            />
           </div>
+
           <ul class="text-sm w-full sm:w-1/2 p-4">
             <li
               v-if="cafesStore.getCurrentCafe.name" 
@@ -113,11 +142,18 @@ import { useCommonStore } from '@/store/common';
 
       <AppDivider />
 
-      <div class="modal__footer p-6">
+      <div class="modal__footer flex justify-between gap-3 flex-wrap md:flex-nowrap p-6">
         <AppButton
-          class="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl px-8 py-4 mx-auto transition duration-300 ease-in-out hover:shadow-lg"
+          class="w-full sm:w-auto flex justify-center items-center border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl"
           @click-on-button="clickOnButton"
         >Хочу в другое место
+        </AppButton>
+
+        <AppButton
+          class="w-full sm:w-auto flex justify-center items-center border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl"
+          :class="isLinkCopied ? 'bg-red-500' : ''"
+          @click-on-button="copyLinkToShare"
+        ><AppShareLinkIcon />
         </AppButton>
       </div>
     </div>

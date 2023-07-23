@@ -23,7 +23,7 @@ import { useCafesStore } from '@/store/cafes';
 
   const copyLinkToShare = async () => {
     // const urlToCopy = `http://localhost:5173/cafe/${cafesStore.getCurrentCafe.id}`;
-    const urlToCopy = `https://main--elegant-conkies-ef2495.netlify.app/cafe/${cafesStore.getCurrentCafe.id}`;
+    const urlToCopy = `https://elegant-conkies-ef2495.netlify.app/cafe/${cafesStore.getCurrentCafe.id}`;
     try {
       await navigator.clipboard.writeText(urlToCopy);
       isLinkCopied.value = true;

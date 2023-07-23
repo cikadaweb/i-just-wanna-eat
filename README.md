@@ -15,8 +15,9 @@
 ### UI components
 
 - Modal
+- Adaptive Image component
 - Button
-- Swiper
+- Badge
 
 ## Setup
 

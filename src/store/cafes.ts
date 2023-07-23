@@ -29,6 +29,20 @@ export const useCafesStore = defineStore('cafes', {
         throw error;
       }
     },
+    async fetchCafeByID(cafeID: string) {
+      const commonStore = useCommonStore();
+      commonStore.setLoading(true);
+      try {
+        const response = await CafesApi.getOneByID(cafeID);
+        const data = await response.data.data;
+        setTimeout(() => {
+          this.setCurrentCafe(data);
+          commonStore.setLoading(false);
+        }, 1000);
+      } catch (error) {
+        throw error;
+      }
+    },
     async fetchRandomCafe() {
       const commonStore = useCommonStore();
       commonStore.setLoading(true);

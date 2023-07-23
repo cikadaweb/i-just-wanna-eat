@@ -19,7 +19,7 @@
 
 <template>
   <button 
-    class="btn"
+    class="btn transition duration-300 ease-in-out hover:shadow-lg"
     :type="type"
     :disabled="disabled"
     @click="clickOnButton"

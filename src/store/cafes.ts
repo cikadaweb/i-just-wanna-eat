@@ -50,7 +50,7 @@ export const useCafesStore = defineStore('cafes', {
       let randomIndex = Math.floor(Math.random() * cafesID.length);
       let randomCafeId = cafesID[randomIndex];
       try {
-        const response = await CafesApi.getOneByID(randomCafeId);
+        const response = await CafesApi.getOneByID(randomCafeId.toString());
         const data = await response.data.data;
         setTimeout(() => {
           this.setCurrentCafe(data);

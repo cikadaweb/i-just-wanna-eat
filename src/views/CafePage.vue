@@ -17,7 +17,7 @@ import { useCafesStore } from '@/store/cafes';
 
   const route = useRoute(); 
 
-  cafesStore.fetchCafeByID(route.params.id);
+  cafesStore.fetchCafeByID(route.params.id.toString());
 
   const isLinkCopied = ref(false);
 

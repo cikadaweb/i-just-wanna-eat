@@ -24,17 +24,17 @@ import { ICafe } from '@/store/cafes.interfaces.ts';
       v-if="item.address"
       class="flex items-center justify-between gap-1 mt-2"
     >
-      <div>{{ item.address }}</div> <AppLocationIcon class="block" />
+      <div>{{ item.address }}</div> <AppLocationIcon class="block"  width="37" height="37"/>
     </li>
     <li
       v-if="item.distance"
       class="flex items-center justify-between mt-2">
-      <div>{{ countCalories }} Ккал (будет потрачено)</div> <AppCaloriesIcon />
+      <div>{{ countCalories }} Ккал (будет потрачено)</div> <AppCaloriesIcon width="34" height="34" />
     </li>
     <li
       v-if="item.landmark"
       class="flex items-center justify-between mt-2">
-      <div>{{ item.landmark }} </div><AppCompassIcon />
+      <div>{{ item.landmark }} </div><AppCompassIcon width="34" height="34" />
     </li>
     <li
       v-if="!item.address && !item.distance && !item.landmark"

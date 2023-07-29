@@ -153,7 +153,7 @@ import { useRouter } from 'vue-router';
           class="w-full sm:w-auto flex justify-center items-center border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl"
           :class="isLinkCopied ? 'bg-red-500' : ''"
           @click-on-button="copyLinkToShare"
-        ><AppShareLinkIcon />
+        ><AppShareLinkIcon width="24" height="24"/>
         </AppButton>
       </div>
     </div>

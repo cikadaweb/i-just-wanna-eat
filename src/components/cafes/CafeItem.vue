@@ -76,8 +76,8 @@ import { useRouter } from 'vue-router';
         </AppBadge>
       </div>
       <div class="flex justify-between mt-5">
-        <span v-if="item.business_lunch"><AppBusinessIcon /></span>
-        <span v-else><AppNoBusinessIcon /></span>
+        <span v-if="item.business_lunch"><AppBusinessIcon width="42" height="41" /></span>
+        <span v-else><AppNoBusinessIcon width="41" height="42" /></span>
         <span v-if="item.price && item.price > 0" class="text-xl font-bold">От {{ item.price }} &#8381;</span>
       </div>
       <div class="text-3xl text-center mt-3">{{ item.name }}</div>
@@ -85,6 +85,7 @@ import { useRouter } from 'vue-router';
         <AppDropdownIcon 
           class="cursor-pointer rounded-full hover:bg-gray-300 transition duration-300 ease-in-out"
           :class="isShowDetails ? 'origin-center rotate-180' : ''"
+          width="41" height="40" 
           @click="toggleCafeDetails"
         />
       </div>

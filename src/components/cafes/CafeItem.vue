@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import AppBadge from '@/components/badge/AppBadge.vue';
-// @ts-ignore
-import AppDropdownIcon from '@/assets/icons/drop-down.svg?component';
-// @ts-ignore
-import AppBusinessIcon from '@/assets/icons/business.svg?component';
-// @ts-ignore
-import AppNoBusinessIcon from '@/assets/icons/nobusiness.svg?component';
+
+import AppDropdownIcon from '@/assets/icons/drop-down.svg';
+import AppBusinessIcon from '@/assets/icons/business.svg';
+import AppNoBusinessIcon from '@/assets/icons/nobusiness.svg';
+
 import CafeItemDetails from '@/components/cafes/CafeItemDetails.vue';
 import AppPicture from '@/components/picture/AppPicture.vue';
 

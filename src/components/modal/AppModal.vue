@@ -4,8 +4,7 @@ import AppButton from '@/components/button/AppButton.vue';
 import AppLabel from '@/components/list/AppLabel.vue';
 import AppSpinner from '@/components/loader/AppSpinner.vue';
 import AppPicture from '@/components/picture/AppPicture.vue'
-// @ts-ignore
-import AppShareLinkIcon from '@/assets/icons/share-link.svg?component';
+import AppShareLinkIcon from '@/assets/icons/share-link.svg';
 
 import { ref, computed } from 'vue';
 import { useCafesStore } from '@/store/cafes';

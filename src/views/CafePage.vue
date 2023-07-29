@@ -3,8 +3,8 @@ import AppPicture from '@/components/picture/AppPicture.vue';
 import AppBadge from '@/components/badge/AppBadge.vue';
 import AppSpinner from '@/components/loader/AppSpinner.vue';
 import AppButton from '@/components/button/AppButton.vue';
-// @ts-ignore
-import AppShareLinkIcon from '@/assets/icons/share-link.svg?component';
+
+import AppShareLinkIcon from '@/assets/icons/share-link.svg';
 
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';

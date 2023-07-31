@@ -11,6 +11,8 @@ import { useCafesStore } from '@/store/cafes';
 import { useCommonStore } from '@/store/common';
 import { useRouter } from 'vue-router';
 
+import scrollController from '@/utils/modal-scroll';
+
   const emit = defineEmits(['close-modal']);
 
   defineProps({
@@ -36,6 +38,7 @@ import { useRouter } from 'vue-router';
   };
 
   const goToCafePage = (cafeID: number) => {
+    scrollController.enabledScroll();
     router.push(`/cafe/${cafeID}`);
   };
 

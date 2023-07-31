@@ -4,7 +4,7 @@
       <router-link class="text-xl font-bold" to="/">I just wanna eat</router-link>
       <nav>
         <ul class="flex items-center gap-4">
-          <li><router-link to="https://github.com/cikadaweb">Обо мне</router-link></li>
+          <li><router-link to="/">Главная</router-link></li>
         </ul>
       </nav>
     </div>

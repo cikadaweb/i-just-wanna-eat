@@ -9,20 +9,20 @@ const props = defineProps({
 });
 
 const spinnerClasses = computed(() => ({
-  "app-spinner--fullscreen": props.fullscreen,
+  "spinner_fullscreen": props.fullscreen,
 }));
 </script>
 
 
 <template>
-  <div class="app-spinner" :class="spinnerClasses">
-    <div class="app-spinner__overlay" />
-    <div class="app-spinner__icon" />
+  <div class="spinner" :class="spinnerClasses">
+    <div class="spinner__overlay" />
+    <div class="spinner__icon" />
   </div>
 </template>
 
 <style scoped>
-.app-spinner {
+.spinner {
   position: absolute;
   top: 0;
   left: 0;
@@ -31,11 +31,11 @@ const spinnerClasses = computed(() => ({
   height: 100%;
 }
 
-.app-spinner:focus {
+.spinner:focus {
   outline: none;
 }
 
-.app-spinner__icon {
+.spinner__icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,13 +48,13 @@ const spinnerClasses = computed(() => ({
   background-image: url("@/assets/icons/spinner-icon.svg");
 }
 
-.app-spinner__overlay {
+.spinner__overlay {
   width: 100%;
   height: 100%;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.app-spinner--fullscreen {
+.spinner_fullscreen {
   position: fixed;
   top: 0;
   left: 0;

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import AppPicture from '@/components/picture/AppPicture.vue';
+import BaseImage from '@/components/UI/BaseImage.vue';
 import AppBadge from '@/components/badge/AppBadge.vue';
-import AppSpinner from '@/components/loader/AppSpinner.vue';
-import AppButton from '@/components/button/AppButton.vue';
+import BaseSpinner from '@/components/UI/BaseSpinner.vue';
+import BaseButton from '@/components/UI/BaseButton.vue';
 
 import AppShareLinkIcon from '@/assets/icons/share-link.svg';
 
@@ -56,7 +56,7 @@ import { useCafesStore } from '@/store/cafes';
   <div class="cafe-page w-full">
 
     <div v-if="commonStore.getLoadingStatus">
-      <AppSpinner fullscreen/>
+      <BaseSpinner fullscreen/>
     </div>
 
     <div 
@@ -65,7 +65,7 @@ import { useCafesStore } from '@/store/cafes';
     >
       <div class="cafe-page__row flex flex-wrap -mx-4">
         <div class="cafe-list__column w-full sm:w-1/2 p-4">
-          <AppPicture :imageSrc="cafeImg" :imageName="cafesStore.getCurrentCafe.name" rounded/>
+          <BaseImage :imageSrc="cafeImg" :imageName="cafesStore.getCurrentCafe.name" rounded/>
         </div>
         <div class="cafe-list__column w-full sm:w-1/2 p-4">
           <h1 class="text-5xl">{{ cafesStore.getCurrentCafe.name }}</h1>
@@ -74,12 +74,12 @@ import { useCafesStore } from '@/store/cafes';
           >{{ cafeCusine }}
           </AppBadge>
 
-          <AppButton
+          <BaseButton
             class="w-[50px] h-[50px] flex justify-center items-center border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl mt-4"
             :class="isLinkCopied ? 'bg-red-500' : ''"
             @click-on-button="copyLinkToShare"
           ><AppShareLinkIcon />
-          </AppButton>
+          </BaseButton>
         </div>
       </div>
       <div class="cafe-page__row flex">

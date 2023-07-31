@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import AppButton from '@/components/button/AppButton.vue';
-import AppDivider from '@/components/divider/AppDivider.vue';
+import BaseButton from '@/components/UI/BaseButton.vue';
+import BaseDivider from '@/components/UI/BaseDivider.vue';
 import CafesList from '@/components/cafes/CafesList.vue';
 import AppModal from '@/components/modal/AppModal.vue';
 
@@ -54,13 +54,13 @@ import { useCafesStore } from '@/store/cafes';
 
 <template>
   <div class="home-page">
-    <AppButton
+    <BaseButton
       class="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-2xl mx-auto my-10 px-8 py-4 transition duration-300 ease-in-out hover:shadow-lg"
       @click-on-button="clickOnButton"
     >Хочу есть!
-    </AppButton>
+    </BaseButton>
 
-    <AppDivider />
+    <BaseDivider />
 
     <CafesList class="mt-5"/>
 

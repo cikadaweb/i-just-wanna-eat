@@ -6,7 +6,7 @@ import AppBusinessIcon from '@/assets/icons/business.svg';
 import AppNoBusinessIcon from '@/assets/icons/nobusiness.svg';
 
 import CafeItemDetails from '@/components/cafes/CafeItemDetails.vue';
-import AppPicture from '@/components/picture/AppPicture.vue';
+import BaseImage from '@/components/UI/BaseImage.vue';
 
 
 import { type PropType, ref, computed } from 'vue';
@@ -60,7 +60,7 @@ import { useRouter } from 'vue-router';
     class="card relative transition-shadow duration-300 ease-in-out hover:shadow-lg hover:shadow-black/30"
   >
 
-    <AppPicture
+    <BaseImage
       class="cursor-pointer"
       :imageSrc="cafeImg"
       :imageName="item.name"

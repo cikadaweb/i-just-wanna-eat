@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AppDivider from '@/components/divider/AppDivider.vue';
-import AppButton from '@/components/button/AppButton.vue';
+import BaseDivider from '@/components/UI/BaseDivider.vue';
+import BaseButton from '@/components/UI/BaseButton.vue';
 import AppLabel from '@/components/list/AppLabel.vue';
-import AppSpinner from '@/components/loader/AppSpinner.vue';
-import AppPicture from '@/components/picture/AppPicture.vue'
+import BaseSpinner from '@/components/UI/BaseSpinner.vue';
+import BaseImage from '@/components/UI/BaseImage.vue'
 import AppShareLinkIcon from '@/assets/icons/share-link.svg';
 
 import { ref, computed } from 'vue';
@@ -78,14 +78,14 @@ import { useRouter } from 'vue-router';
     <div class="modal__container w-full max-w-xl">
       <div class="modal__header flex justify-between gap-1 text-2xl md:text-3xl font-bold p-6">
         <div>Как насчёт сходить сюда?</div>
-        <AppButton
+        <BaseButton
           class="modal__close border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-2xl px-3 py-1 transition duration-300 ease-in-out hover:shadow-lg"
           @click-on-button="closeModal"
         >&#10006;
-        </AppButton>
+        </BaseButton>
       </div>
 
-      <AppDivider />
+      <BaseDivider />
 
       <div class="modal__body text-base md:text-lg p-6">
         
@@ -93,7 +93,7 @@ import { useRouter } from 'vue-router';
           v-if="commonStore.getLoadingStatus"
           class="h-[300px]"
         >
-          <AppSpinner/>
+          <BaseSpinner/>
         </div>
 
         <div
@@ -101,7 +101,7 @@ import { useRouter } from 'vue-router';
           class="flex justify-between items-center flex-wrap -mx-4"
         >
           <div class="w-full sm:w-1/2 p-4">
-            <AppPicture
+            <BaseImage
               class="cursor-pointer"
               :imageSrc="cafeImg"
               :imageName="cafesStore.getCurrentCafe.name"
@@ -140,21 +140,21 @@ import { useRouter } from 'vue-router';
         </div>
       </div>
 
-      <AppDivider />
+      <BaseDivider />
 
       <div class="modal__footer flex justify-between gap-3 flex-wrap md:flex-nowrap p-6">
-        <AppButton
+        <BaseButton
           class="w-full sm:w-auto flex justify-center items-center border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl"
           @click-on-button="clickOnButton"
         >Хочу в другое место
-        </AppButton>
+        </BaseButton>
 
-        <AppButton
+        <BaseButton
           class="w-full sm:w-auto flex justify-center items-center border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl"
           :class="isLinkCopied ? 'bg-red-500' : ''"
           @click-on-button="copyLinkToShare"
         ><AppShareLinkIcon width="24" height="24"/>
-        </AppButton>
+        </BaseButton>
       </div>
     </div>
   </div>

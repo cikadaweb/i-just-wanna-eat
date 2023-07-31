@@ -53,6 +53,10 @@ import { useRouter } from 'vue-router';
     return 'Неизвестно'
   });
 
+  const handleClickOutside = () => {
+    toggleCafeDetails();
+  }
+
 </script>
 
 <template>
@@ -86,10 +90,10 @@ import { useRouter } from 'vue-router';
           class="cursor-pointer rounded-full hover:bg-gray-300 transition duration-300 ease-in-out"
           :class="isShowDetails ? 'origin-center rotate-180' : ''"
           width="41" height="40" 
-          @click="toggleCafeDetails"
+          @click.stop="toggleCafeDetails"
         />
       </div>
     </div>
-    <CafeItemDetails v-if="isShowDetails" :item="item"/>
+    <CafeItemDetails v-if="isShowDetails" :item="item" v-outside-click="handleClickOutside"/>
   </div>
 </template>

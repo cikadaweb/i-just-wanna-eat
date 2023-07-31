@@ -75,7 +75,7 @@ import { useCafesStore } from '@/store/cafes';
           </AppBadge>
 
           <AppButton
-            class="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl mt-4"
+            class="w-[50px] h-[50px] flex justify-center items-center border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white text-lg md:text-2xl mt-4"
             :class="isLinkCopied ? 'bg-red-500' : ''"
             @click-on-button="copyLinkToShare"
           ><AppShareLinkIcon />

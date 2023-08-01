@@ -14,10 +14,14 @@
 
 ### UI components
 
+- BaseButton
+- BaseSpinner
+- BaseDivider
 - Modal
 - Adaptive Image component
-- Button
 - Badge
+- Alert
+- Card
 
 ## Setup
 

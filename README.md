@@ -6,7 +6,7 @@
 
 ### Technologies
 
-- Vue 3 Composition API
+- Vue 3 Composition API, VueRouter
 - TypeScript
 - Pinia
 - Tailwind CSS
